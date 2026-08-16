@@ -37,7 +37,7 @@ def connect_db(db_path: str | Path = DB_PATH):
             if fallback in {"0", "false", "no"}:
                 raise
 
-    conn = sqlite3.connect(str(db_path))
+    conn = sqlite3.connect(str(db_path), check_same_thread=False)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -65,7 +65,7 @@ def ensure_database(db_path: str | Path = DB_PATH):
             return conn
         except Exception:
             conn.close()
-            sqlite_conn = sqlite3.connect(str(db_path))
+            sqlite_conn = sqlite3.connect(str(db_path), check_same_thread=False)
             sqlite_conn.row_factory = sqlite3.Row
             return sqlite_conn
 

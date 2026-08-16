@@ -3,6 +3,9 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+# RailPulse local chat history
+.chat_history.json
+
 # C extensions
 *.so
 
